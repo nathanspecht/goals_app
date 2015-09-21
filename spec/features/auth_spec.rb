@@ -30,11 +30,8 @@ end
 feature "logging in" do
 
   scenario "shows username on the homepage after login" do
-    user = build(:user)
-    visit new_session_url
-    fill_in "Username", with: user.username
-    fill_in "Password", with: user.password
-    click_button "Sign in"
+    user = create(:user)
+    sign_in(user)
 
     expect(page).to have_content(user.username)
   end
@@ -44,16 +41,12 @@ feature "logging out" do
 
   scenario "begins with logged out state" do
     visit goals_url
-    expect(current_path).to match new_session_url
+    expect(current_url).to match new_session_url
   end
 
   scenario "doesn't show username on the homepage after logout" do
-    user = build(:user)
-    visit new_session_url
-    fill_in "Username", with: user.username
-    fill_in "Password", with: user.password
-    click_button "Sign in"
-
+    user = create(:user)
+    sign_in(user)
     click_button "Log out"
 
     expect(page).to_not have_content(user.username)
