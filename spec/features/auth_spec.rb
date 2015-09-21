@@ -9,7 +9,7 @@ feature "the signup process" do
   end
 
   scenario "has a new user page" do
-    expect(current_path).to_match new_user_url
+    expect(current_url).to match new_user_url
   end
 
   feature "signing up a user" do
@@ -44,7 +44,7 @@ feature "logging out" do
 
   scenario "begins with logged out state" do
     visit goals_url
-    expect(current_path).to_match new_session_url
+    expect(current_path).to match new_session_url
   end
 
   scenario "doesn't show username on the homepage after logout" do
