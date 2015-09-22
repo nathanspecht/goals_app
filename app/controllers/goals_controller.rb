@@ -46,7 +46,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal = Goal.find(params[:id])
+    @goal = Goal.includes(comments: :commenter).find(params[:id])
   end
 
   private

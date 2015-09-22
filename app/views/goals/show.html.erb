@@ -3,6 +3,13 @@
 <%= @goal.description %>
 <br>
 <br>
+<%= render partial: 'comments/comment', collection: @goal.comments, as: :comment %>
+<br>
+<br>
+<%= render partial: 'comments/form', locals: { commentable_id: @goal.id,
+                                               commentable_type: 'Goal' } %>
+<br>
+<br>
 <% if current_user.id == @goal.user_id %>
 <%= link_to "Edit goal", edit_goal_url %>
 <% end %>

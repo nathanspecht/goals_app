@@ -16,6 +16,7 @@ class Goal < ActiveRecord::Base
   after_initialize :set_defaults
 
   belongs_to :user
+  has_many :comments, as: :commentable
 
   validates :title, :user_id, presence: true
   validates :private, :completed, inclusion: [true, false]

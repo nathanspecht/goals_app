@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :goals
+  has_many :posted_comments, foreign_key: :commenter_id, class_name: 'Comment'
+  has_many :comments, as: :commentable
 
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 2 }, allow_nil: true
