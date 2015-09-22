@@ -1,1 +1,9 @@
-<h1>all the goals</h1>
+<h1>Public Goals</h1>
+<%= render partial: 'goal', collection: @all_goals, as: "goal" %>
+
+<h1>Your Goals</h1>
+<%= render partial: 'goal', collection: @user_goals, as: "goal" %>
+
+<br>
+<br>
+<%= link_to "Add a goal", new_goal_url %>

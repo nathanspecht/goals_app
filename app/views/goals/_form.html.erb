@@ -1,0 +1,33 @@
+<form action="<%= action %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <label>Goal
+    <input type="text" name="goal[title]" value="<%= @goal.title %>">
+  </label>
+
+  <label>Description
+    <input type="textarea" name="goal[description]" value="<%= @goal.description %>">
+  </label>
+
+  <p>
+    <label>
+      <input type="radio"
+              name="goal[private]"
+              value="true"
+              <%= "checked" if @goal.private %>>
+              Private
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="radio"
+             name="goal[private]"
+             value="false"
+             <%= "checked" unless @goal.private %>>
+             Public
+    </label>
+  </p>
+
+  <input type="submit" value="<%= submit_text %>">
+</form>

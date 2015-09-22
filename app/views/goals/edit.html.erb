@@ -1,0 +1,5 @@
+<h1>Edit goal</h1>
+
+<%= render partial: 'form', locals: { action: goal_url(@goal),
+                                      method: 'patch',
+                                      submit_text: 'Update goal' } %>
